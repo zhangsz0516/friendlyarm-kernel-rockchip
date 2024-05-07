@@ -511,7 +511,7 @@ static int rockchip_pmu_set_idle_request(struct rockchip_pm_domain *pd,
 
 	return ret;
 error:
-	panic("panic_on_set_idle set ...\n");
+	pr_err("%s : panic_on_set_idle set ...\n", __func__);
 	return ret;
 }
 
@@ -849,7 +849,7 @@ static int rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
 	return ret;
 
 error:
-	panic("panic_on_set_domain set ...\n");
+	pr_err("%s : panic_on_set_domain set ...\n", __func__);
 	return ret;
 }
 
@@ -894,7 +894,7 @@ static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
 		rockchip_pmu_ungate_clk(pd, true);
 
 		if (!power_on) {
-			rockchip_pmu_save_qos(pd);
+			// rockchip_pmu_save_qos(pd);
 			pd->is_qos_saved = true;
 
 			/* if powering down, idle request to NIU first */
@@ -1723,8 +1723,8 @@ static int rockchip_pm_domain_probe(struct platform_device *pdev)
 
 	mutex_unlock(&dmc_pmu_mutex);
 
-	atomic_notifier_chain_register(&panic_notifier_list,
-				       &pmu_panic_block);
+	// atomic_notifier_chain_register(&panic_notifier_list,
+	// 			       &pmu_panic_block);
 
 	g_pmu = pmu;
 	return 0;
