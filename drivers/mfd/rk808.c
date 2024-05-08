@@ -1600,7 +1600,7 @@ static struct i2c_driver rk808_i2c_driver = {
 	.remove   = rk808_remove,
 };
 
-#ifdef CONFIG_ROCKCHIP_THUNDER_BOOT
+// #ifdef CONFIG_ROCKCHIP_THUNDER_BOOT
 static int __init rk808_i2c_driver_init(void)
 {
 	return i2c_add_driver(&rk808_i2c_driver);
@@ -1612,9 +1612,9 @@ static void __exit rk808_i2c_driver_exit(void)
 	i2c_del_driver(&rk808_i2c_driver);
 }
 module_exit(rk808_i2c_driver_exit);
-#else
-module_i2c_driver(rk808_i2c_driver);
-#endif
+// #else
+// module_i2c_driver(rk808_i2c_driver);
+// #endif
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Chris Zhong <zyw@rock-chips.com>");

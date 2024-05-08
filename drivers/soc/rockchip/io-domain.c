@@ -915,7 +915,7 @@ static int __init rockchip_iodomain_driver_init(void)
 {
 	return platform_driver_register(&rockchip_iodomain_driver);
 }
-fs_initcall(rockchip_iodomain_driver_init);
+subsys_initcall(rockchip_iodomain_driver_init);
 
 static void __exit rockchip_iodomain_driver_exit(void)
 {
